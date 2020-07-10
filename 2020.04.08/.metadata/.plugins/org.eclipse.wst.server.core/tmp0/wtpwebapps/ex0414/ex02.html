@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>자바스크립트 함수</title>
+	<script>
+		function sum(){
+			var tot=0;
+			for(i=0; i<=100; i++){
+				tot=tot+i;
+			}
+			alert("100까지의 합="+tot);
+		}
+		sum();
+		
+		function funColor(color, back){
+			var h=document.getElementById("header");
+			h.style.color=color;
+			h.style.background=back;
+		}
+		
+		function funBack(back){
+			var name=document.getElementsByClassName("name");
+			for(i=0; i<name.length; i++){
+				var n=name[i];
+				n.style.background=back;
+			}
+		}
+	</script>
+</head>
+<body>
+	<button onclick="sum()">1~100까지의 합계</button>
+	<input type="button" value="1~100까지의 합계" onclick="sum()">
+	<button onclick="location.href='http://www.naver.com'">네이버</button>
+	<hr>
+	<h1 id="header">안녕하세요</h1>
+	<button onclick="funColor('red', 'blue');">빨강</button>
+	<button onclick="funColor('yellow', 'black');">노랑</button>
+	<button onclick="funColor('blue','red');">파랑</button>
+	
+	<h1 class="name">이송현</h1>
+	<h1 class="name">이대현</h1>
+	<h1 class="name">이기세</h1>
+	<button onclick="funBack('red');">빨강</button>
+	<button onclick="funBack('blue');">파랑</button>
+	<button onclick="funBack('yellow');">노랑</button>
+</body>
+</html>

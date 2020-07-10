@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>연습1</title>
+	<style>
+		/*전체 선택자*/
+		*{color: red;}
+		
+		/*태그 선택자*/
+		h1{color: blue;}
+		p{color: yellow; background: black;}
+		
+		/*아이디 선택자*/
+		#header{width: 800px; height: 50px; background: lime; margin: 20px;}
+		#wrap{width: 1000px; height: 500px; background: fuchsia;}
+		#aside{width: 200px; height: 300px; background: yellow; float: left; margin: 10px; padding: 20px;}
+		#content{width: 600px; height: 300px; background: pink; float: left; margin: 10px; padding: 20px;}
+		
+		/*클랙스 선택자*/
+		.fruit{font-size: 30px;}
+		
+		/*후손 선택자*/
+		#wrap h1{color: teal;}
+		
+		/*자손 선택자*/
+		#content > h1{color: orange;}
+		
+		/*속성 선택자*/
+		input[type="text"] {background: purple;}
+		input[type="password"]{background: green;}
+		
+		/*반응 선택자*/
+		h1:hover {background: black; color: white;}
+		#wrap h1:active {background: white; color: black;}
+		
+		/*구조 선택자*/
+		li:first-child {background: white;} /*첫번째*/
+		li:nth-child(2n) {background: black; color: white;} /*짝수*/
+		li:nth-child(2n+1) {background: white; color: black;} /*홀수*/
+	</style>
+</head>
+<body>
+	<!-- 태그 주석 -->
+	<h1>전체 선택자 적용하기</h1>
+	<p>전체 선택자를 사용하는 모든....</p>
+	
+	<div id="header"><h1>여기는 제목입니다...</h1></div>
+	<div id="wrap">
+		<div id="aside"><h1>여기는 aside....</h1></div>
+		<div id="content">
+			<h1>여기는 content</h1>
+			<ol>
+				<li class="fruit">바나나</li>
+				<li class="fruit">딸기</li>
+				<li>옥수수</li>
+				<li class="fruit">포도</li>
+				<li>감자</li>
+			</ol>
+			<input type="text">
+			<input type="password">
+		</div>
+	</div>
+</body>
+</html>

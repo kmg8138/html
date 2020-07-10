@@ -1,0 +1,36 @@
+
+4월 22, 2020 08:55:42.82 NEW SESSION
+4월 22, 2020 08:55:42.82 [3916:1160:0422/085542.822:ERROR:gcm_channel_status_request.cc(145)] GCM channel request failed.
+4월 22, 2020 08:56:35.12 [3916:1160:0422/085635.122:ERROR:gcm_channel_status_request.cc(145)] GCM channel request failed.
+4월 22, 2020 08:57:54.41 [3916:1160:0422/085754.413:ERROR:gcm_channel_status_request.cc(145)] GCM channel request failed.
+4월 22, 2020 09:00:11.79 [3916:1160:0422/090011.790:ERROR:gcm_channel_status_request.cc(145)] GCM channel request failed.
+4월 22, 2020 09:03:19.37 [3916:1160:0422/090319.373:ERROR:gcm_channel_status_request.cc(145)] GCM channel request failed.
+4월 22, 2020 09:09:51.95 [3916:1160:0422/090951.956:ERROR:gcm_channel_status_request.cc(145)] GCM channel request failed.
+
+4월 23, 2020 17:08:41.31 NEW SESSION
+4월 23, 2020 17:08:41.31 [3192:412:0423/170841.316:ERROR:browser_switcher_service.cc(238)] XXX Init()
+
+4월 27, 2020 14:08:21.49 NEW SESSION
+4월 27, 2020 14:08:21.49 [6772:7072:0427/140821.493:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 27, 2020 14:10:25.56 [5976:7292:0427/141025.563:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 27, 2020 14:11:44.61 [6360:7192:0427/141144.618:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 27, 2020 14:14:37.75 [7792:7620:0427/141437.757:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 27, 2020 14:14:42.22 [5480:5328:0427/141442.224:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 27, 2020 14:17:48.69 [5796:6680:0427/141748.697:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 27, 2020 14:50:50.92 [8084:6636:0427/145050.923:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 27, 2020 16:52:48.66 [6068:5740:0427/165248.668:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 27, 2020 16:53:52.35 [5724:5220:0427/165352.357:ERROR:browser_switcher_service.cc(238)] XXX Init()
+
+4월 29, 2020 09:02:32.88 NEW SESSION
+4월 29, 2020 09:02:32.88 [3436:3332:0429/090232.882:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 29, 2020 16:26:06.88 [1492:6104:0429/162606.884:ERROR:browser_switcher_service.cc(238)] XXX Init()
+4월 29, 2020 16:40:27.44 [2192:1308:0429/164027.449:ERROR:browser_switcher_service.cc(238)] XXX Init()
+
+5월 01, 2020 09:20:37.62 NEW SESSION
+5월 01, 2020 09:20:37.63 [1604:4288:0501/092037.628:ERROR:browser_switcher_service.cc(238)] XXX Init()
+5월 01, 2020 09:21:00.41 [4368:3696:0501/092100.414:ERROR:browser_switcher_service.cc(238)] XXX Init()
+5월 01, 2020 09:23:37.54 [3256:3572:0501/092337.540:ERROR:browser_switcher_service.cc(238)] XXX Init()
+5월 01, 2020 09:39:09.42 [3448:3976:0501/093909.420:ERROR:browser_switcher_service.cc(238)] XXX Init()
+
+5월 07, 2020 10:11:15.20 NEW SESSION
+5월 07, 2020 10:11:15.20 [5356:5360:0507/101115.204:ERROR:browser_switcher_service.cc(238)] XXX Init()

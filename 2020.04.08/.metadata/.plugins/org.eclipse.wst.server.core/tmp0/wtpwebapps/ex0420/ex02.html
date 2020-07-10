@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>지역검색</title>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<h1>[지역검색]</h1>
+	<div id="search">
+		검색수: <span id="total"></span>
+		<input type="text" value="제주도" id="txtSearch">
+		<input type="button" value="검색" id="btnSearch">
+	</div>
+	<table id="tbl" width="700" border=1></table>
+	<div>
+		<button id="btnPre">◀</button>
+		<button id="btnNext">▶</button>
+	</div>
+</body>
+<script>
+
+	var query=$("#txtSearch").val();
+	var page=1;
+	getList();
+	$("#btnPre").on("click",function(){
+		page=-1;
+		getList();
+	});
+	
+	$("#btnNext").on("click",function(){
+		page=+1;
+		getList();
+	});
+
+	
+	$("#btnSearch").on("click",function(){
+		query=$("#txtSearch").val();
+		getList();
+	});	
+	
+	$("#txtSearch").keydown(function(){
+		query=$("#txtSearch").val();
+		getList();
+	});
+	
+	function getList(){
+		$.ajax({
+			type:"get",
+			url:"https://dapi.kakao.com/v2/local/search/keyword.json",
+			headers: {"Authorization":"KakaoAK 708f40aafed5f14d0d1429f914bfb5bf"},
+			dataType:"json",
+			data:{"query":query, "page":page, "size":10},
+			success:function(data){
+				var total=data.meta.total_count;
+				$("#total").html(total);
+				var str="";
+				$(data.documents).each(function(){
+					var place=this.place_name;
+					var address=this.address_name;
+					var tel=this.phone;
+					str +="<tr>";
+					str +="<td>"+place+"</td>";
+					str +="<td>"+address+"</td>";
+					str +="<td>"+tel+"</td>";
+					str +="</tr>";
+				});
+				$("#tbl").html(str);
+			}
+		});
+	}
+</script>
+</html>

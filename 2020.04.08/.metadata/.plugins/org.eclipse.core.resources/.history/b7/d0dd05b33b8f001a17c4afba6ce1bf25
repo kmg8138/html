@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<%@ page import="ex0506.*,java.util.*" %>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<h1>[강좌별 평균점수]</h1>
+	<table border=1 width=700>
+		<tr>
+			<td>강좌번호</td>
+			<td>강좌명</td>
+			<td>담당교수</td>
+			<td>강의실</td>
+			<td>평균점수</td>
+		</tr>
+		<%
+		EDAO dao=new EDAO();
+		ArrayList<CVO> list=dao.clist();
+		%>
+	</table>
+</body>
+</html>

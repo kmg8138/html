@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+	<meta charset="UTF-8">
+	<title>학과검색</title>
+</head>
+<body>
+	<h1>[학과검색]</h1>
+	<select id="dept">
+		<option>전산</option>
+		<option>건축</option>
+		<option>전자</option>
+	</select>
+	<input type="button" value="검색" id="btnSearch">
+	<div>
+		<h1>[교수목록]</h1>
+		<table id="tbl" border=1 width=500></table>
+		<script id="temp" type="text/x-handlebars-template">
+			{{#each pArray}}
+				<tr class=row>
+					<td class=pcode>{{pcode}}</td>
+					<td>{{pname}}</td>
+				</tr>
+			{{/each}}
+		</script>
+	</div>
+	<div>
+		<h1>[학생목록]</h1>
+		<table id="tbl" border=1 width=500></table>
+		<script id="temp" type="text/x-handlebars-template">
+			{{#each sArray}}
+				<tr class=row>
+					<td class=scode>{{scode}}</td>
+					<td>{{sname}}</td>
+					<td>{{dept}}</td>
+					<td>{{birthday}}</td>
+				</tr>
+			{{/each}}
+		</script>
+	</div>
+</body>
+</html>

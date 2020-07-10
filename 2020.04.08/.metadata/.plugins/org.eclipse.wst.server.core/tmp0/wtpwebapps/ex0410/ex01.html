@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+	*{font-family: '궁서체';}
+		body{background: pink;}
+		#page{background: white; width: 1000px; margin: auto;
+		      box-shadow: 10px 10px 10px yellow; border-radius: 10px 10px 10px 10px;
+		      padding: 20px;}
+		#content{width: 900px; border: 1px solid gray; margin: auto; padding: 20px;}
+		.tbl{width: 700px; margin: auto; border-collapse: collapse;}
+		.tbl td{border: 1px solid gray; padding: 5px; text-align: center;}  
+		.tbl .title{background: #8C8C8C; color: black; text-align: center;}
+		.tbl .data:nth-child(2n) {background: #EAEAEA;}
+		.tbl .data:nth-child(2n+1) {background: #BDBDBD;}
+		.tbl .data:hover{background: white;}
+		#menu{width: 700px; margin: auto; margin-top: 50px;}
+		a{text-decoration: none; color: black; font-size: 15px;}
+		a:hover{color: gray;}
+	</style>
+</head>
+<body>
+	<div id="page">
+		<div id="content">
+			<h3>게시판</h3>
+			<hr>
+			<div id="menu">
+				<a href="#">글쓰기</a>
+			</div>
+			<table class="tbl">
+				<tr class="title">
+					<td>No.</td>
+					<td>Title</td>
+					<td>Date</td>
+				</tr>
+				<tr class="data">
+					<td>01</td>
+					<td>here is Title......</td>
+					<td>2020-04-05</td>
+				</tr>
+				<tr class="data">
+					<td>02</td>
+					<td>here is Title......</td>
+					<td>2020-04-05</td>
+				</tr>
+				<tr class="data">
+					<td>03</td>
+					<td>here is Title......</td>
+					<td>2020-04-05</td>
+				</tr>
+				<tr class="data">
+					<td>04</td>
+					<td>here is Title......</td>
+					<td>2020-04-05</td>
+				</tr>
+				<tr class="data">
+					<td>05</td>
+					<td>here is Title......</td>
+					<td>2020-04-05</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

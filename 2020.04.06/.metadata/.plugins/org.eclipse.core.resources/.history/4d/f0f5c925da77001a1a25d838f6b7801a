@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		table{margin:0px auto;} /*테이블 가운데정렬*/
+		td{text-align: }
+	</style>
+</head>
+<body>
+	<header>
+		<h1>이송현 쇼핑몰</h1>
+		<hr/>
+	</header>
+	
+	<nav>
+		<table width=500>
+			<tr>
+				<td>침대</td>
+				<td>쇼파</td>
+				<td>책상</td>
+				<td>식탁</td>
+			</tr>
+		</table>
+		<hr/>
+	</nav>
+	
+	<section>
+		<table border=1 width=800>
+			<tr>
+				<td>
+					<img src="http://placehold.it/150x150"><br>
+					<h3>상품명: 더블침대<br></h3>
+					<h1>가격: 100만원</h1>
+				</td>
+				<td>
+					<img src="http://placehold.it/150x150"><br>
+					<h1>상품명: 더블침대<br></h1>
+					<h1>가격: 100만원</h1>
+				</td>
+				<td>
+					<img src="http://placehold.it/150x150"><br>
+					<h1>상품명: 더블침대<br></h1>
+					<h1>가격: 100만원</h1>
+				</td>
+				<td>
+					<img src="http://placehold.it/150x150"><br>
+					<h1>상품명: 더블침대<br></h1>
+					<h1>가격: 100만원</h1>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img src="http://placehold.it/150x150"><br>
+					<h1>상품명: 더블침대<br></h1>
+					<h1>가격: 100만원</h1>
+				</td>
+				<td>
+					<img src="http://placehold.it/150x150"><br>
+					<h1>상품명: 더블침대<br></h1>
+					<h1>가격: 100만원</h1>
+				</td>
+				<td>
+					<img src="http://placehold.it/150x150"><br>
+					<h1>상품명: 더블침대<br></h1>
+					<h1>가격: 100만원</h1>
+				</td>
+				<td>
+					<img src="http://placehold.it/150x150"><br>
+					<h1>상품명: 더블침대<br></h1>
+					<h1>가격: 100만원</h1>
+				</td>
+			</tr>
+		</table>
+	</section>
+	
+	<footer>
+		<hr/>
+		<h1>주소: 인천 미추홀구 학익동</h1>
+	</footer>
+</body>
+</html>

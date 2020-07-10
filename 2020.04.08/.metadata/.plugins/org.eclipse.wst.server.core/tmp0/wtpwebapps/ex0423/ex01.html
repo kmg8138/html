@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+	<title>상품검색</title>
+	<style>
+		body{text-align: center;}
+		#tbl{margin: auto; border-collapse: collapse; width: 1100px;}
+		#tbl1{margin: auto; border-collapse: collapse; width: 1100px;}
+		.search{background: orange; width: 1100px; padding: 10px; margin: auto;}
+		#head{background: orange;}
+		td{border: 1px solid black;}
+		.row:hover{background: lime;}
+		#productId{width: 200px;}
+		#title{width: 450px;}
+		#lprice{width: 100px;}
+		#hprice{width: 100px;}
+		#img{width: 150px;}
+		#productId{width: 200px;}
+		.title{width: 450px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
+		.lprice{width: 100px;}
+		.hprice{width: 100px;}
+		img{width: 150px; height: 150px;}
+		.productId{width: 200px;}
+		#btnSave{margin-right: 830px;}
+		#tbl2{margin-top: 20px;}
+		#btnDelete{margin-right: 1030px;}
+	</style>
+</head>
+<body>
+	<h1>상품검색</h1>
+	<div class="search">
+		<input type="text" id="txtSearch">
+		<input type="button" value="검색" id="btnSearch">
+		검색수: <span id="total"></span>
+	</div>
+	<div id="tbl2">
+		<input type="button" id="btnSave" value="선택저장">
+		<span><input type="button" id="back" value="이전"></span>
+		<span><input type="button" id="next" value="다음"></span>
+		현재페이지: <span id="page"></span>
+	</div>
+	<table id="tbl"></table>
+	<script id="temp" type="text/x-jandlebars-template">
+		<tr id="head">
+			<td><input type="checkbox" id="chkAll"></td>
+			<td id="productId"><div>상품코드</div></td>
+			<td id="title"><div>상품명</div></td>
+			<td id="lprice"><div>최저가격</div></td>
+			<td id="hprice"><div>최고가격</div></td>
+			<td id="img"><div>이미지</div></td>
+		</tr>
+		{{#each items}}
+		<tr class="row">
+			<td><input type="checkbox" class="chk"></td>
+			<td><div class="productId">{{{productId}}}</div></td>
+			<td><div class="title">{{{title}}}</div></td>
+			<td><div class="lprice">{{{lprice}}}</div></td>
+			<td><div class="hprice">{{{hprice}}}</div></td>
+			<td><img src={{{image}}}></td>
+		</tr>
+		{{/each}}	
+	</script>
+	<hr>
+	<h1>상품목록</h1>
+	<div class="search">
+		등록 상품갯수: <span id="count"></span>
+	</div>
+	<input type="button" id="btnDelete" value="선택삭제">
+	<table id="tbl1"></table>
+	<script id="temp1" type="text/x-jandlebars-template">
+		<tr id="head">
+			<td><input type="checkbox" id="chkAll1"></td>
+			<td>상품코드</td>
+			<td>상품명</td>
+			<td>최저가격</td>
+			<td>최고가격</td>
+			<td>이미지</td>
+			<td>수정</td>
+		</tr>
+		{{#each items}}
+		<tr class="row">
+			<td><input type="checkbox" class="chk"></td>
+			<td><div class="productId">{{{sid}}}</div></td>
+			<td><div class="title">{{{title}}}</div></td>
+			<td><input type="text" class="lprice" value={{{lprice}}}></td>
+			<td><input type="text" class="hprice" value={{{hprice}}}></td>
+			<td><img src={{{image}}}></td>
+			<td><button>수정</button></td>
+		</tr>
+		{{/each}}	
+	</script>
+</body>
+<script>
+	var display=5;
+	var start=1;
+	var page=1;
+	var total=0;
+	getList();
+	getShop();
+	
+	$("#txtSearch").focus();
+	
+	function getShop(){
+		$.ajax({
+			type:"get",
+			url:"list.jsp",
+			dataType:"json",
+			success:function(data){
+				$("#count").html(data.total)
+				var temp=Handlebars.compile($("#temp1").html());
+				$("#tbl1").html(temp(data));
+			}
+		});
+	}
+
+	function getList(){
+		$("#txtSearch").focus();
+		var query=$("#txtSearch").val();
+		$("#page").html(page);
+		$.ajax({
+			type:"get",
+			url:"shop.jsp",
+			dataType:"json",
+			data:{"query":query, "display":display, "start":start},
+			success:function(data){
+				total=data.total;
+				$("#total").html(total);
+				var temp=Handlebars.compile($("#temp").html());
+				$("#tbl").html(temp(data));
+			}
+		});
+	}
+	//수정 버튼을 클릭했을 때
+		$("#tbl1").on("click", ".row button", function(){
+	      var row=$(this).parent().parent();
+	      var sid=row.find(".productId").text();
+	      var lprice=row.find(".lprice").val();
+	      var hprice=row.find(".hprice").val();
+	   
+	      if(confirm("선택행을 수정하시겠습니까?")==false) return;
+	      $.ajax({
+	         type:"post",
+	         url:"update.jsp",
+	         data:{"sid":sid, "lprice":lprice , "hprice":hprice},
+	         success:function(){
+	         	alert("수정되었습니다.")
+	         	getShop();
+	         },
+		     error:function(){
+		        alert("수정실패하였습니다.")
+		     }
+	      });   
+	   });
+	
+	//선택삭제 버튼을 눌렀을 때
+		$("#btnDelete").on("click",function(){
+		if(confirm("선택행을 삭제하시겠습니까?")==false) return;
+		$("#tbl1 .row .chk:checked").each(function(){
+			var row=$(this).parent().parent();
+			var sid=row.find(".productId").text();
+			
+			$(this).prop("checked",false);
+			
+			$.ajax({
+				type:"post",
+				url:"delete.jsp",
+				data:{"sid":sid},
+				success:function(){}
+			});
+		});
+		alert("삭제되었습니다.")
+		$("#tbl1 #chkAll").prop("checked",false);
+		getShop();
+		});
+		
+	//전체선택 버튼을 클릭했을 때(삭제)
+	$("#tbl1").on("click","#chkAll",function(){
+		if($(this).is(":checked")){
+			$("#tbl1 .row .chk").each(function(){
+				$(this).prop("checked",true);
+			});
+		}else{
+			$("#tbl1 .row .chk").each(function(){
+				$(this).prop("checked",false);
+			});
+		}
+	});
+		
+	//선택저장 버튼을 클릭했을 때
+	$("#btnSave").on("click",function(){
+		if(confirm("선택행을 저장하시겠습니까?")==false) return;
+		$("#tbl .row .chk:checked").each(function(){
+			var row=$(this).parent().parent();
+			var title=row.find(".title").text();
+			var id=row.find(".productId").text();
+			var lprice=row.find(".lprice").text();
+			var hprice=row.find(".hprice").text();
+			var image=row.find("img").attr("src");
+			
+			$(this).prop("checked",false);
+			
+			$.ajax({
+				type:"post",
+				url:"insert.jsp",
+				data:{"sid":id,"title":title,"lprice":lprice,"hprice":hprice,"image":image},
+				success:function(){
+					getShop();
+				}
+			});
+		});
+		alert("저장되었습니다.")
+		$("#tbl #chkAll").prop("checked",false);
+	});
+	
+	//전체선택 버튼을 클릭했을 때(저장)
+	$("#tbl").on("click","#chkAll",function(){
+		if($(this).is(":checked")){
+			$("#tbl .row .chk").each(function(){
+				$(this).prop("checked",true);
+			});
+		}else{
+			$("#tbl .row .chk").each(function(){
+				$(this).prop("checked",false);
+			});
+		}
+	});
+	
+	$("#next").on("click",function(){
+		if(start+display<total){
+		page=page+1;
+		start=start+display;
+		getList();
+		}else{
+			alert("마지막 페이지입니다.");
+		}
+	});
+	
+	$("#back").on("click",function(){
+		if(page>1){
+			page=page-1;
+			start=start-display;
+			getList();
+		}else{
+			alert("첫번째 페이지입니다.");
+		}
+	})
+	
+	$("#btnSearch").on("click",function(){
+		getList();
+	});
+	
+	$("#txtSearch").keydown(function(key){
+		if(key.keyCode==13){
+			getList();
+		}
+	})
+</script>
+</html>

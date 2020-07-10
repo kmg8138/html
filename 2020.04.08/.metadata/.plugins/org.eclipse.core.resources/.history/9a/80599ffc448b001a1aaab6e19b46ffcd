@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="ex0429.*"%>
+
+<%
+	String scode=request.getParameter("scode");
+	String lcode=request.getParameter("lcode");
+	
+	EVO vo=new EVO();
+	vo.setScode(scode);
+	vo.setLcode(lcode);
+	
+	EDAO dao=new EDAO();
+	dao.insert(vo);
+%>
